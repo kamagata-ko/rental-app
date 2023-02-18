@@ -1,5 +1,5 @@
-<!DOCTYPE generatorConfiguration PUBLIC
-        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
@@ -8,50 +8,26 @@
                         userId="testUser"
                         password="test">
         </jdbcConnection>
-        <javaTypeResolver>
+
+        <javaTypeResolver >
             <property name="forceBigDecimals" value="false"/>
             <property name="useJSR310Types" value="true"/>
         </javaTypeResolver>
-        <!-- Model Settings -->
+
         <javaModelGenerator targetPackage="com.example.rental_app.infrastructure.entity.mybatis"
                             targetProject="src/main/java">
         </javaModelGenerator>
-        <!-- Client Settings -->
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources" >
+        </sqlMapGenerator>
+
         <javaClientGenerator targetPackage="com.example.rental_app.infrastructure.repository.mybatis"
                              targetProject="src/main/java"
                              type="XMLMAPPER">
         </javaClientGenerator>
-        
-        <!-- XML Settings -->
-        <sqlMapGenerator targetPackage="mapper"
-                         targetProject="src/main/resources">
-        </sqlMapGenerator>
 
-        <!-- Tables -->
-        <!-- Book relations-->
-        <table tableName="t_book" domainObjectName="TBookEntity">
-            <generatedKey column="book_id" sqlStatement="SELECT uuid()"/>
-        </table>
-<!--        <table tableName="book_tag" domainObjectName="BookTagEntity">-->
-<!--            <generatedKey column="book_id" sqlStatement="SELECT uuid()"/>-->
-<!--        </table>-->
-<!--        <table tableName="book" domainObjectName="BookEntity">-->
-<!--            <generatedKey column="book_id" sqlStatement="SELECT uuid()"/>-->
-<!--        </table>-->
-<!--        <table tableName="tag" domainObjectName="TagEntity">-->
-<!--            <generatedKey column="tag_id" sqlStatement="SELECT LAST_INSERT_ID()"/>-->
-<!--        </table>-->
-<!--        <table tableName="book_rental" domainObjectName="BookRentalEntity">-->
-<!--            <generatedKey column="book_rental_id" sqlStatement="SELECT LAST_INSERT_ID()"/>-->
-<!--        </table>-->
-<!--        <table tableName="book_return" domainObjectName="BookReturnEntity">-->
-<!--            <generatedKey column="book_return_id" sqlStatement="SELECT LAST_INSERT_ID()"/>-->
-<!--        </table>-->
-<!--         Member relations -->
-<!--        <table tableName="member" domainObjectName="MemberEntity">-->
-<!--            <generatedKey column="member_id" sqlStatement="SELECT LAST_INSERT_ID()"/>-->
-<!--        </table>-->
-<!--        <table tableName="member_rental_book" domainObjectName="MemberRentalBookEntity"/>-->
+        <table tableName="t_book" domainObjectName="TBookEntity" />
     </context>
 
 </generatorConfiguration>
